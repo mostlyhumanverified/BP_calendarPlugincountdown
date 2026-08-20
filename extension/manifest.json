@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "Meeting Countdown Link for Google Calendar",
+  "version": "1.0.0",
+  "description": "Adds a button to Google Calendar's event editor that inserts a live countdown-to-end-of-meeting link into the event description.",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_popup": "options.html",
+    "default_title": "Meeting Countdown Link settings",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "options_page": "options.html",
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "permissions": ["storage"],
+  "host_permissions": ["https://calendar.google.com/*"],
+  "content_scripts": [
+    {
+      "matches": ["https://calendar.google.com/*"],
+      "js": ["config.js", "content.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle"
+    }
+  ]
+}
